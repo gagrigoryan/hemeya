@@ -6,14 +6,25 @@
     <div class="auth__img">
       <v-img
         :src="require('@/assets/img/' + bgImage)"
+        :lazy-src="require('@/assets/img/' + bgImage)"
         class="auth__img-item"
-      />
+      >
+        <template v-slot:placeholder>
+          <v-row
+            class="fill-height ma-0"
+            align="center"
+            justify="center"
+          >
+            <v-progress-circular indeterminate color="blue lighten-2" />
+          </v-row>
+        </template>
+      </v-img>
     </div>
 
     <div class="auth__content">
       <v-card class="auth__content-card px-6">
         <div class="auth__content-card-btn">
-          <nuxt-link to="/register">
+          <nuxt-link exact to="/register">
             <v-btn class="auth__content-card-btn-item btn">
               Регистрация
             </v-btn>
@@ -58,8 +69,6 @@ export default {
 <style lang="sass" scoped>
 .auth
   width: 100%
-  height: 100vh
-  overflow: hidden
   font-size: 18px
   .screen__logo
     top: 20% !important

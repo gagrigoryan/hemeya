@@ -1,13 +1,20 @@
 <template>
-  <div class="auth-layout">
-    Auth Layout
-    <nuxt />
-  </div>
+  <v-app>
+    <div class="auth-layout pa-6">
+      <auth-navbar />
+      <nuxt />
+    </div>
+  </v-app>
 </template>
 
 <script>
+import authNavbar from '../components/authNavbar'
+
 export default {
-  name: 'Auth'
+  name: 'Auth',
+  components: {
+    authNavbar
+  }
 }
 </script>
 
@@ -15,7 +22,6 @@ export default {
 .auth-layout
   width: 100%
   height: 100vh
-  overflow: hidden
   background: #E4F0FA
   box-shadow: 50px 80px 80px rgba(0, 0, 0, 0.25)
 </style>

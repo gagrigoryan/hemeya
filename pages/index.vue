@@ -18,7 +18,17 @@
         <v-img
           :src="require('~/assets/img/' + tutorial.img)"
           class="tutorials__carousel-item-img"
-        />
+        >
+          <template v-slot:placeholder>
+            <v-row
+              class="fill-height ma-0"
+              align="center"
+              justify="center"
+            >
+              <v-progress-circular indeterminate color="blue lighten-2" />
+            </v-row>
+          </template>
+        </v-img>
       </div>
     </VueSlickCarousel>
     <v-card class="tutorials__card px-5 py-8">
