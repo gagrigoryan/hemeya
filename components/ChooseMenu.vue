@@ -7,15 +7,15 @@
       <v-btn
         class="menu__btn pl-3 pr-1"
         v-bind="attrs"
-        width="8.5rem"
+        width="100%"
         v-on="on"
       >
         <div class="menu__btn-text">
           {{ value }}
+          <v-icon color="#6E81A0">
+            mdi-menu-down
+          </v-icon>
         </div>
-        <v-icon color="#6E81A0">
-          mdi-menu-down
-        </v-icon>
       </v-btn>
     </template>
     <v-list color="#E3EDF7">
