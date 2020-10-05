@@ -30,6 +30,7 @@
 export default {
   name: 'OnboardingBottomNavbar',
   props: [
+    // eslint-disable-next-line vue/require-prop-types
     'nextActive'
   ],
   computed: {

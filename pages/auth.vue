@@ -1,7 +1,7 @@
 <template>
   <div class="auth">
     <div class="screen__logo">
-      <img src="~assets/img/logo.png">
+      <img alt="" src="~assets/img/logo.png">
     </div>
     <div class="auth__img">
       <v-img
@@ -24,28 +24,28 @@
     <div class="auth__content">
       <v-card class="auth__content-card px-6">
         <div class="auth__content-card-btn">
-          <nuxt-link exact to="/register">
-            <v-btn class="auth__content-card-btn-item btn">
-              Регистрация
-            </v-btn>
-          </nuxt-link>
+          <main-btn to="/register">
+            Регистрация
+          </main-btn>
           <div class="auth__content-card-btn-text d-flex align-center my-2">
             <v-divider class="mr-4" />
             или
             <v-divider class="ml-4" />
           </div>
-          <nuxt-link to="/login">
-            <v-btn class="auth__content-card-btn-item btn">
-              Вход
-            </v-btn>
-          </nuxt-link>
+          <main-btn to="/login">
+            Вход
+          </main-btn>
         </div>
 
-        <div class="auth__content-card-social mt-8">
-          <v-btn class="auth__content-card-social-btn">
+        <div
+          class="
+            auth__content-card-social
+            mt-8"
+        >
+          <v-btn class="auth__content-card-social-btn" @click="login('google')">
             <font-awesome-icon class="auth__content-card-social-btn-gp" :icon="['fab', 'google-plus-g']" />
           </v-btn>
-          <v-btn class="auth__content-card-social-btn">
+          <v-btn class="auth__content-card-social-btn" @click="login('fbn')">
             <font-awesome-icon class="auth__content-card-social-btn-fb" :icon="['fab', 'facebook-f']" />
           </v-btn>
           <v-btn class="auth__content-card-social-btn">
@@ -58,11 +58,21 @@
 </template>
 
 <script>
+import MainBtn from '../components/MainBtn'
+
 export default {
   name: 'Auth',
+  components: {
+    MainBtn
+  },
   data: () => ({
     bgImage: 'auth.png'
-  })
+  }),
+  methods: {
+    login (service) {
+      this.$auth.loginWith(service)
+    }
+  }
 }
 </script>
 

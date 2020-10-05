@@ -1,35 +1,52 @@
 <template>
   <v-app-bar app height="100px" color="#E3EFF9" elevate-on-scroll class="navbar rounded-b-xl px-6 py-2">
-    <v-btn
-      class="navbar__menu btn"
+    <main-btn
+      v-if="$route.path.split('/')[1] === 'home'"
+      class="navbar__menu"
       icon
       fab
+      @click="menuClick"
     >
       <div class="wrapper pa-3">
         <div class="navbar__menu-line navbar__menu-1 ml-auto" />
         <div class="navbar__menu-line navbar__menu-2 my-1 mx-auto" />
         <div class="navbar__menu-line navbar__menu-3 mr-auto" />
       </div>
-    </v-btn>
+    </main-btn>
+    <prev-btn v-if="$route.path.split('/')[1] !== 'home'" />
     <img
       class="navbar__logo ml-auto mr-auto"
       src="~assets/img/auth_logo.png"
     >
-    <v-btn
-      class="navbar__notice btn"
+    <main-btn
+      class="navbar__notice"
       icon
       fab
+      to="/notifications"
     >
       <v-icon color="#6E81A0">
         mdi-bell-outline
       </v-icon>
-    </v-btn>
+    </main-btn>
   </v-app-bar>
 </template>
 
 <script>
+import prevBtn from './prevBtn'
+import MainBtn from './MainBtn'
+require('vue2-animate/dist/vue2-animate.min.css')
+
 export default {
-  name: 'MainNavbar'
+  name: 'MainNavbar',
+  components: {
+    prevBtn,
+    MainBtn
+  },
+  methods: {
+    menuClick () {
+      this.$store.dispatch('ToggleMenuDrawer', true)
+    }
+  }
 }
 </script>
 

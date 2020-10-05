@@ -1,81 +1,123 @@
 <template>
-  <div class="">
-    <div class="register__text text-center">
-      Выберите мессенджер, чтобы получить проверочный код:
+  <div class="register">
+    <h4 class="text-center register__title">
+      Создай свой аккаунт!
+    </h4>
+    <div class="name mt-5">
+      <label for="name">Имя Фамилия*</label>
+      <input
+        id="name"
+        v-model="name"
+        class="my-2"
+        type="text"
+        name="name"
+        placeholder="Антон Павлов"
+      >
     </div>
-    <div class="register__messengers mt-3 mb-2">
-      <v-btn
-        color="#1AAFFA"
-        fab
-        :icon="messenger !== 'telegram'"
-        :dark="messenger === 'telegram'"
-        class="register__messengers-item mx-2"
-        @click="clickMessenger('telegram')"
+    <div class="birthday mt-5">
+      <v-menu
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="290px"
       >
-        <font-awesome-icon
-          class="register__messengers-item-tg"
-          :icon="['fab', 'telegram-plane']"
-        />
-      </v-btn>
-      <v-btn
-        color="#25D366"
-        :icon="messenger !== 'whatsapp'"
-        :dark="messenger === 'whatsapp'"
-        fab
-        class="register__messengers-item mx-2"
-        @click="clickMessenger('whatsapp')"
-      >
-        <font-awesome-icon class="register__messengers-item-wh" :icon="['fab', 'whatsapp']" />
-      </v-btn>
-      <v-btn
-        color="#7555DF"
-        fab
-        :icon="messenger !== 'viber'"
-        :dark="messenger === 'viber'"
-        class="register__messengers-item mx-2"
-        @click="clickMessenger('viber')"
-      >
-        <font-awesome-icon class="register__messengers-item-vb" :icon="['fab', 'viber']" />
-      </v-btn>
+        <template v-slot:activator="{ on, attrs }">
+          <label for="birthday">Дата рождения*</label>
+          <input
+            id="birthday"
+            v-model="date"
+            readonly
+            class="my-2"
+            type="text"
+            name="name"
+            placeholder="Формат: 30.12.1990 "
+            v-bind="attrs"
+            v-on="on"
+          >
+        </template>
+        <v-date-picker v-model="date" no-title />
+      </v-menu>
     </div>
-    <phone-input :phone="registerPhone" />
-    <div class="register__checkbox d-flex align-center">
-      <v-checkbox v-model="useTerms" class="register__checkbox-radio" />
-      <div class="register__checkbox-text">
-        Подтверждаю, что согласен с <span>Пользовательским соглашением</span>
+    <div class="sex mt-5">
+      <label for="">Пол*</label>
+      <div class="radio d-flex mt-2">
+        <div class="mr-8">
+          <input id="female" v-model="sex" value="female" type="radio">
+          <label for="female" class="radio-label">Женщина</label>
+        </div>
+        <div class="">
+          <input id="male" v-model="sex" value="male" type="radio">
+          <label for="male" class="radio-label">Мужчина</label>
+        </div>
       </div>
+    </div>
+    <div class="password mt-5">
+      <label for="name">Пароль*</label>
+      <input
+        id="password"
+        v-model="password"
+        class="my-2"
+        type="password"
+        name="password"
+        placeholder="Введите пароль"
+      >
+    </div>
+    <div class="password_repeat mt-5">
+      <label for="name">Повторите пароль*</label>
+      <input
+        id="password_repeat"
+        v-model="passwordRepeat"
+        class="my-2"
+        type="password"
+        name="password_repeat"
+        placeholder="Введите пароль"
+      >
+    </div>
+    <div class="button mt-11">
+      <main-btn
+        append
+        to="email"
+      >
+        Далее
+      </main-btn>
     </div>
   </div>
 </template>
 
 <script>
-import phoneInput from '../../../components/phoneInput'
+import MainBtn from '../../../components/MainBtn'
 
 export default {
   name: 'Index',
   components: {
-    phoneInput
+    MainBtn
   },
   data: () => ({
+    name: null,
+    date: null,
+    sex: 'female',
+    password: null,
+    passwordRepeat: null
   }),
   computed: {
-    registerPhone () {
-      return this.$store.getters['register/getRegisterPhone']
-    },
-
-    messenger () {
-      return this.$store.getters['register/getMessenger']
-    },
-
-    useTerms: {
-      get () {
-        return this.$store.state.register.useTerms
-      },
-
-      set (value) {
-        this.$store.dispatch('register/changeUseTerms', value)
-      }
-    }
+    // registerPhone () {
+    //   return this.$store.getters['register/getRegisterPhone']
+    // },
+    //
+    // messenger () {
+    //   return this.$store.getters['register/getMessenger']
+    // },
+    //
+    // useTerms: {
+    //   get () {
+    //     return this.$store.state.register.useTerms
+    //   },
+    //
+    //   set (value) {
+    //     this.$store.dispatch('register/changeUseTerms', value)
+    //   }
+    // }
   },
   mounted () {
   },
@@ -99,18 +141,11 @@ export default {
 .register
   color: #334669 !important
   font-size: 16px
-  &__messengers
-    text-align: center
-    &-item
-      font-size: 2rem
-  &__checkbox
-    width: 100%
-    justify-content: center
-    &-text
-      font-size: 10px
-      line-height: 11px
-      color: #000
-      opacity: .6
-      span
-        text-decoration: underline
+  &__title
+    font-size: 18px
+    opacity: .6
+
+label
+  color: #334669
+  opacity: .6
 </style>

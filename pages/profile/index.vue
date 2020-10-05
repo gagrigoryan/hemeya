@@ -1,10 +1,9 @@
 <template>
   <div class="profile">
     <v-card
-      class="profile__fone"
+      class="profile__fon"
     >
       <v-img
-        :src="require('~/assets/img/auth.png')"
         width="100%"
         height="65vh"
       >
@@ -72,6 +71,7 @@ export default {
 
 <style lang="sass" scoped>
 .profile
+  background: #495B7B
   &__card
     transform: translateY(-8vh)
   &__user

@@ -10,8 +10,30 @@ export const state = () => ({
   endpoints: {
     tutorials: host + 'tutorials',
     countries: host + 'countries'
-  }
+  },
+  menuDrawer: false,
+  filterDrawer: false
 })
+
+export const mutations = {
+  TOGGLE_MENU_DRAWER (state, value) {
+    state.menuDrawer = value
+  },
+
+  TOGGLE_FILTER_DRAWER (state, value) {
+    state.filterDrawer = value
+  }
+}
+
+export const actions = {
+  ToggleMenuDrawer ({ commit }, value) {
+    commit('TOGGLE_MENU_DRAWER', value)
+  },
+
+  ToggleFilterDrawer ({ commit }, value) {
+    commit('TOGGLE_FILTER_DRAWER', value)
+  }
+}
 
 export const getters = {
   getEndpoints (state) {

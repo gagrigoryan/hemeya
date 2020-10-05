@@ -7,38 +7,57 @@
     class="bottom-nav py-4 px-6"
   >
     <div class="wrapper">
-      <button class="bottom-nav__btn">
-        <v-icon color="#334669">
-          mdi-home-outline
-        </v-icon>
-      </button>
-      <button class="bottom-nav__btn">
-        <v-icon color="#334669">
-          mdi-book-outline
-        </v-icon>
-      </button>
-      <button class="bottom-nav__btn">
-        <v-icon color="#334669">
-          mdi-tooltip-plus-outline
-        </v-icon>
-      </button>
-      <button class="bottom-nav__btn">
-        <v-icon color="#334669">
-          mdi-bell-outline
-        </v-icon>
-      </button>
-      <button style="box-shadow: inset -1px -1px 3px #FFFFFF, inset 1.5px 1.5px 3px rgba(174, 174, 192, 0.4)" class="bottom-nav__btn">
-        <v-icon color="#745FF2">
-          mdi-account-outline
-        </v-icon>
-      </button>
+      <nuxt-link
+        v-for="(item, index) in navLinks"
+        :key="index"
+        :to="item.url"
+        append
+      >
+        <button
+          class="bottom-nav__btn"
+          :class="{'active-link': $route.path.split('/')[1] === item.name}"
+        >
+          <v-icon>
+            {{ item.icon }}
+          </v-icon>
+        </button>
+      </nuxt-link>
     </div>
   </v-bottom-navigation>
 </template>
 
 <script>
 export default {
-  name: 'MainBottomNavbar'
+  name: 'MainBottomNavbar',
+  data: () => ({
+    navLinks: [
+      {
+        name: 'home',
+        url: '/home',
+        icon: 'mdi-home-outline'
+      },
+      {
+        name: 'book',
+        url: '/book',
+        icon: 'mdi-book-outline'
+      },
+      {
+        name: 'add',
+        url: '/add',
+        icon: 'mdi-plus-box-outline'
+      },
+      {
+        name: 'notifications',
+        url: '/notifications',
+        icon: 'mdi-bell-outline'
+      },
+      {
+        name: 'profile',
+        url: '/profile',
+        icon: 'mdi-account-outline'
+      }
+    ]
+  })
 }
 </script>
 
@@ -51,9 +70,16 @@ export default {
     width: 40px !important
     height: 40px !important
     outline: none
+    i
+      color: #334669 !important
 
 .wrapper
   display: grid
   grid-template-columns: repeat(5, 1fr)
   grid-gap: 35px
+
+.active-link
+  box-shadow: inset -1px -1px 3px #FFFFFF, inset 1.5px 1.5px 3px rgba(174, 174, 192, 0.4)
+  i
+    color: #745FF2 !important
 </style>

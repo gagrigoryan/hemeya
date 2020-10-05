@@ -23,18 +23,7 @@
         </div>
       </div>
       <div class="keyboard__btn-wrapper px-6 my-2">
-        <nuxt-link :to="link">
-          <v-btn
-            :disabled="!contBtn"
-            :class="{'active-btn': contBtn}"
-            depressed
-            width="100%"
-            height="60px"
-            class="btn keyboard__btn"
-          >
-            Далее
-          </v-btn>
-        </nuxt-link>
+        <slot />
       </div>
     </v-card>
   </div>
@@ -49,12 +38,8 @@ export default {
     numBtn
   },
   props: [
-    'link'
   ],
   computed: {
-    contBtn () {
-      return this.$store.getters['register/getRegisterPhone'].length > 0 && this.$store.state.register.useTerms
-    }
   },
   methods: {
     clickDigit (n) {
@@ -70,14 +55,6 @@ export default {
 <style lang="sass" scoped>
 .keyboard
   width: 100%
-  &__btn
-    color: #2E476E
-    background: #E8F3FB !important
-    opacity: .4
-    transition: all .3s ease-in !important
-    &__wrapper
-      width: 100%
-      height: 60px
   &__hr
     background: rgba(110, 129, 160, 0.235905)
     width: 35%
@@ -97,9 +74,4 @@ export default {
     width: 100%
     display: grid
     grid-template-columns: 1fr 1fr 1fr
-
-.active-btn
-  box-shadow: -11px -11px 20px rgba(255, 255, 255, 0.272044), -8px -40px 22px rgba(246, 251, 255, 0.384288), -8px 0px 8px rgba(244, 248, 251, 0.50254), 19px 21px 50px rgba(176, 195, 210, 0.727846) !important
-  border-radius: 20px !important
-  opacity: 1 !important
 </style>

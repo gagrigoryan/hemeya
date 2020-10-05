@@ -1,27 +1,15 @@
 <template>
   <div class="register pt-5">
     <nuxt-child ref="childComponent" />
-    <transition
-      enter-active-class="animated slideInUp"
-      leave-active-class="animated slideOutDown"
-    >
-      <keyboard
-        v-if="keyboardInput"
-        class="register__keyboard"
-        :link="$store.state.register.registerLink"
-        @toggleKey="keyboardClick"
-        @backspace="backspace"
-      />
-    </transition>
   </div>
 </template>
 
 <script>
 import keyboard from '../../components/keyboard'
-require('vue2-animate/dist/vue2-animate.min.css')
 
 export default {
   components: {
+    // eslint-disable-next-line vue/no-unused-components
     keyboard
   },
   beforeRouteUpdate (to, from, next) {

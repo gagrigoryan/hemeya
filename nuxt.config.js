@@ -69,6 +69,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     [
@@ -81,6 +82,10 @@ export default {
           {
             set: '@fortawesome/free-brands-svg-icons',
             icons: ['fab']
+          },
+          {
+            set: '@fortawesome/free-regular-svg-icons',
+            icons: ['far']
           }
         ]
       }
@@ -96,6 +101,30 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {},
+
+  auth: {
+    strategies: {
+      google: {
+        _scheme: 'oauth2',
+        authorization_endpoint: 'https://accounts.google.com/o/oauth2/auth',
+        userinfo_endpoint: 'https://www.googleapis.com/oauth2/v3/userinfo',
+        scope: ['openid', 'profile', 'email'],
+        access_type: undefined,
+        access_token_endpoint: undefined,
+        response_type: 'token',
+        token_type: 'Bearer',
+        redirect_uri: undefined,
+        client_id: 'SET_ME',
+        token_key: 'access_token',
+        state: 'UNIQUE_AND_NON_GUESSABLE'
+      }
+    },
+    fb: {
+      client_id: '1671464192946675',
+      userinfo_endpoint: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday,friends',
+      scope: ['public_profile', 'email', 'user_friends', 'user_birthday']
+    }
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module

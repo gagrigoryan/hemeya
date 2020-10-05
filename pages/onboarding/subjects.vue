@@ -27,12 +27,6 @@
               <h3 class="subjects__wrapper-item-title">
                 {{ subject.name }}
               </h3>
-              <input
-                v-model="checkedSubject"
-                class="subjects__wrapper-item-check"
-                type="checkbox"
-                :value="index"
-              >
             </v-card>
           </v-lazy>
         </v-col>
@@ -76,13 +70,7 @@ export default {
         position: absolute
         top: 10px
         right: 10px
-        background: #E3EDF7
-        //box-shadow: inset -6px -3px 5px rgba(255, 255, 255, 0.750601), inset 3px 6px 6px #C3D7E7, inset 4px 2px 6px #B1C5D5, inset 0px 2px 4px #C8D4E2
-        width: 17px
-        height: 17px
-        border-radius: 2px !important
-        outline: none
-        border: none
+
       &-title
         font-weight: 500
         font-size: 14px

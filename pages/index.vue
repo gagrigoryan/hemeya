@@ -1,5 +1,6 @@
 <template>
   <div class="tutorials">
+    <Preloader v-show="loader" :opacity="1" />
     <div class="screen__logo">
       <img src="~assets/img/logo.png">
     </div>
@@ -59,19 +60,24 @@
 </template>
 
 <script>
+import Preloader from '../components/Preloader'
 
 export default {
-  components: {},
+  components: {
+    Preloader
+  },
   data: () => ({
     slickOptions: {
       slidesToShow: 1,
       slidesToScroll: 1,
       dots: true,
       autoplay: true,
-      arrows: false
+      arrows: false,
+      lazyLoad: 'ondemand'
     },
     currentSlide: 0,
-    cardContentToggle: true
+    cardContentToggle: true,
+    loader: true
   }),
   computed: {
     tutorials () {
@@ -86,6 +92,11 @@ export default {
   },
   created () {
     this.$store.dispatch('tutorials/loadTutorials')
+  },
+  mounted () {
+    setTimeout(() => {
+      this.loader = false
+    }, 650)
   },
   methods: {
     nextSlide () {

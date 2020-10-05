@@ -35,12 +35,16 @@
               <!--              <div class="fons__wrapper-item-check">-->
               <!--                <font-awesome-icon class="fons__wrapper-item-check-icon mb-1 ml-1" :icon="['fas', 'check']" />-->
               <!--              </div>-->
-              <input
-                v-model="checkedFons"
-                class="fons__wrapper-item-check"
-                type="checkbox"
-                :value="fon.id"
-              >
+              <div class="checkbox fons__wrapper-item-check">
+                <input
+                  :id="fon.id"
+                  v-model="checkedFons"
+                  class="fons__wrapper-item-check"
+                  type="checkbox"
+                  :value="fon.id"
+                >
+                <label :for="fon.id" class="check-label" />
+              </div>
             </v-card>
           </v-lazy>
         </v-col>
@@ -75,13 +79,7 @@ export default {
         position: absolute
         top: 8px
         right: 8px
-        background: #E3EDF7
-        //box-shadow: inset -6px -3px 5px rgba(255, 255, 255, 0.750601), inset 3px 6px 6px #C3D7E7, inset 4px 2px 6px #B1C5D5, inset 0px 2px 4px #C8D4E2
-        width: 17px
-        height: 17px
-        border-radius: 2px !important
-        outline: none
-        border: none
+
         &-icon
           color: #6E81A0
           font-size: 15px
