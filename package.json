@@ -22,7 +22,6 @@
     "nanoid": "^2.1.11",
     "nuxt": "^2.14.0",
     "nuxt-fontawesome": "^0.4.0",
-    "v-clipboard": "^2.2.3",
     "vue-slick-carousel": "^1.0.6",
     "vue-tel-input-vuetify": "^1.2.12",
     "vue2-animate": "^2.1.3"
