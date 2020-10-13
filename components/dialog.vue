@@ -3,6 +3,7 @@
     v-model="open"
     max-width="350"
     :persistent="persistent"
+    @input="$emit('input', open)"
   >
     <v-card class="dialog">
       <v-btn

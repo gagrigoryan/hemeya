@@ -7,7 +7,7 @@
       <v-btn
         class="menu__btn pl-3 pr-1"
         v-bind="attrs"
-        width="100%"
+        :width="width"
         v-on="on"
       >
         <div class="menu__btn-text">
@@ -40,6 +40,10 @@ export default {
     },
     value: {
       type: String
+    },
+    width: {
+      type: String,
+      default: '100%'
     }
   },
   data: () => ({

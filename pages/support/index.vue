@@ -5,7 +5,7 @@
       <p class="py-0 my-2">
         Выберите тему:
       </p>
-      <choose-menu v-model="chooseTheme" :themes="themes" />
+      <choose-menu v-model="chooseTheme" width="120px" :themes="themes" />
     </div>
     <div class="text mt-7">
       <textarea v-model="text" class="pa-3" />

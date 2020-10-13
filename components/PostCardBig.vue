@@ -34,7 +34,7 @@
           {{ post.text ? post.text : 'Наберите текст...' }}
         </div>
       </v-card>
-      <div class="post-card__author">
+      <div v-if="!short" class="post-card__author">
         by {{ post.authorNick }}
       </div>
     </v-card>

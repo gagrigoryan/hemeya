@@ -154,6 +154,7 @@
             fab
             height="30"
             width="30"
+            to="/subscription"
           >
             <v-icon color="#6E81A0">
               mdi-chevron-right
@@ -235,6 +236,7 @@
             fab
             height="30"
             width="30"
+            to="/invite"
           >
             <v-icon color="#6E81A0">
               mdi-chevron-right

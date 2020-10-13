@@ -37,9 +37,9 @@ export default {
         icon: 'mdi-home-outline'
       },
       {
-        name: 'book',
-        url: '/book',
-        icon: 'mdi-book-outline'
+        name: 'feed',
+        url: '/feed',
+        icon: 'mdi-book-multiple-outline'
       },
       {
         name: 'add',
@@ -47,9 +47,9 @@ export default {
         icon: 'mdi-plus-box-outline'
       },
       {
-        name: 'notifications',
-        url: '/notifications',
-        icon: 'mdi-bell-outline'
+        name: 'blog',
+        url: '/blog',
+        icon: 'mdi-book-open-outline'
       },
       {
         name: 'profile',

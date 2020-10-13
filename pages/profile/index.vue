@@ -27,7 +27,7 @@
       </v-img>
       <div class="profile__avatar">
         <v-avatar class="mt-3 " height="100" width="100">
-          <v-img :src="require(`~/assets/img/${ user.avatar }`)">
+          <v-img :src="user.avatar">
             <template v-slot:placeholder>
               <v-row
                 class="fill-height ma-0"
@@ -46,7 +46,9 @@
           width="30"
           height="30"
           class="camera__btn"
+          @click="loadPicture"
         >
+          <input ref="picture" accept="image/*" type="file" hidden @change="handleFileUpload">
           <v-icon color="#6E81A0">
             mdi-camera-outline
           </v-icon>
@@ -180,7 +182,7 @@ export default {
     user: {
       name: 'Антон Павлов',
       nickname: 'hublot_13',
-      avatar: 'users/user3.png',
+      avatar: require('~/assets/img/users/user3.png'),
       fon: 'fons/fon0.png',
       followers: 173,
       follows: 1486,
@@ -188,7 +190,8 @@ export default {
     },
     fonFlag: false,
     activeLink: 0,
-    rowView: true
+    rowView: true,
+    loadImg: ''
   }),
   computed: {
     posts () {
@@ -199,6 +202,22 @@ export default {
     },
     stories () {
       return this.$store.getters['publications/getPosts']
+    }
+  },
+  methods: {
+    loadPicture () {
+      const picture = this.$refs.picture
+      picture.click()
+    },
+    handleFileUpload () {
+      const file = this.$refs.picture.files[0]
+      if (file) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          this.user.avatar = e.target.result
+        }
+        reader.readAsDataURL(file)
+      }
     }
   }
 }

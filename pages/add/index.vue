@@ -121,7 +121,7 @@
             <p class="my-0 mb-2">
               Выбери тип:
             </p>
-            <choose-menu v-model="typeChoose" :themes="typeItems" />
+            <choose-menu v-model="typeChoose" width="120px" :themes="typeItems" />
           </div>
         </v-col>
 
@@ -132,7 +132,7 @@
             <p class="my-0 mb-2">
               Выбери тему:
             </p>
-            <choose-menu v-model="themeChoose" :themes="themeItems" />
+            <choose-menu v-model="themeChoose" width="120px" :themes="themeItems" />
           </div>
         </v-col>
 
@@ -175,7 +175,7 @@
           class="mt-10"
         >
           <div class="add__action-item buttons text-center px-10">
-            <primary-btn class="mb-5">
+            <primary-btn class="mb-5" to="/profile">
               Опубликовать
             </primary-btn>
             <nuxt-link
